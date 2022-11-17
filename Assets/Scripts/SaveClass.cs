@@ -18,8 +18,6 @@ public class SaveData
     public float _def;
     /// <summary>素早さ</summary>
     public float _agi;
-    /// <summary>レベル</summary>
-    public int _lv;
     /// <summary>スキルポイント</summary>
     public int _sp;
     /// <summary>強化可能回数</summary>
@@ -35,7 +33,6 @@ public class SaveClass : MonoBehaviour
     public float Str => _str;
     public float Def => _def;
     public float Agi => _agi;
-    public int Lv => _lv;
     public int Sp => _sp;
     public int Turn => _turn;
 
@@ -51,24 +48,26 @@ public class SaveClass : MonoBehaviour
     float _def;
     /// <summary>素早さ</summary>
     float _agi;
-    /// <summary>レベル</summary>
-    int _lv;
     /// <summary>スキルポイント</summary>
     int _sp;
     /// <summary>強化可能回数</summary>
     int _turn;
 
     int _random;
+
+    [SerializeField]
+    [Header("上昇倍率")]
+    float[] _magnification;
+
+    /// <summary>値をセット</summary>
     public void SetValue(SaveData saveData)
     {
-        //値をSaveDataからセット
         _name = saveData._name;
         _hp = saveData._hp;
         _mp = saveData._mp;
         _str = saveData._str;
         _def = saveData._def;
         _agi = saveData._agi;
-        _lv = saveData._lv;
         _sp = saveData._sp;
         _turn = saveData._turn;
     }
@@ -76,50 +75,49 @@ public class SaveClass : MonoBehaviour
     private void Awake() => I = this;
 
     /// <summary>体力を強化</summary>
-    public void HpUp()
-    {
-        _random = UnityEngine.Random.Range(0, 20);
-        _hp += _random;
-        Training();
-    }
+    public void HpUp() => RandomResult(_hp);
 
     /// <summary>魔力を強化</summary>
-    public void MpUp()
-    {
-        _random = UnityEngine.Random.Range(0, 20);
-        _mp += _random;
-        Training();
-    }
+    public void MpUp() => RandomResult(_mp);
 
     /// <summary>攻撃力を強化</summary>
-    public void StrUp()
-    {
-        _random = UnityEngine.Random.Range(0, 20);
-        _str += _random;
-        Training();
-    }
+    public void StrUp() => RandomResult(_str);
 
     /// <summary>防御力を強化</summary>
-    public void DefUp()
-    {
-        _random = UnityEngine.Random.Range(0, 20);
-        _def += _random;
-        Training();
-    }
+    public void DefUp() => RandomResult(_def);
 
     /// <summary>素早さを強化</summary>
-    public void AgiUp()
-    {
-        _random = UnityEngine.Random.Range(0, 20);
-        _agi += _random;
-        Training();
-    }
+    public void AgiUp() => RandomResult(_agi);
 
     /// <summary>共通の命令</summary>
     public void Training()
     {
         _turn--;
         SaveController.I.OverWriteSaveData();
-        CharStatus.I.Reload();
+        CharStatus.I.ReSave();
+    }
+
+    public void RandomResult(float data)
+    {
+        _random = UnityEngine.Random.Range(0, 20);
+
+        if (_random >= 18)
+        {
+            Debug.Log("大成功！");
+            data += _random * _magnification[0];
+            Training();
+        }
+        else if (_random <= 17 && _random >= 6)
+        {
+            Debug.Log("成功");
+            data += _random * _magnification[1];
+            Training();
+        }
+        else
+        {
+            data -= _random * _magnification[2];
+            Debug.Log("失敗");
+            Training();
+        }
     }
 }

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class SaveController : MonoBehaviour
 {
-    public string SaveDataPath => _saveDataPath;
+    /// <summary>保存したいJsonのパス名</summary>
+    public string[] SaveDataPath => _saveDataPath;
+
+    /// <summary>キャラNo.</summary>
     public int Num => _num;
 
     public static SaveController I;
@@ -13,23 +16,25 @@ public class SaveController : MonoBehaviour
     [Header("初期ステータス")]
     StatusData _StatusData;
 
-    /// <summary>保存したJsonのパス名</summary>
+    /// <summary>保存したいJsonのパス名</summary>
     [SerializeField]
-    [Header("読み込むセーブデータの名前")]
-    string _saveDataPath;
+    string[] _saveDataPath;
 
-    /// <summary>キャラナンバー</summary>
+    /// <summary>キャラNo.</summary>
     int _num;
-
-    private void Awake() => I = this;
 
     private void Start()
     {
-        _saveDataPath = SelectChar.I.CharName;
+        I = this;
+
         _num = SelectChar.I.Num;
+        //_saveDataPath[_num] = SelectChar.I.SaveData;
+
+        Debug.Log(_num);
+        Debug.Log(_saveDataPath[_num]);
 
         //セーブデータの読み込み
-        SaveData saveData = JsonSaveManager<SaveData>.Load(_saveDataPath);
+        SaveData saveData = JsonSaveManager<SaveData>.Load(_saveDataPath[_num]);
 
         if (saveData == null)//セーブデータが存在しない場合は値を初期化
         {
@@ -42,7 +47,6 @@ public class SaveController : MonoBehaviour
                 _str = _StatusData.StatusDatas[_num].Str,
                 _def = _StatusData.StatusDatas[_num].Def,
                 _agi = _StatusData.StatusDatas[_num].Agi,
-                _lv = _StatusData.StatusDatas[_num].Lv,
                 _sp = _StatusData.StatusDatas[_num].Sp,
                 _turn = _StatusData.StatusDatas[_num].Turn, 
             };
@@ -51,7 +55,7 @@ public class SaveController : MonoBehaviour
         SaveClass.I.SetValue(saveData);
     }
 
-    //エディタ上で確認するときはこっちが必要だった
+
     private void OnApplicationQuit() => OverWriteSaveData();
 
 
@@ -67,11 +71,11 @@ public class SaveController : MonoBehaviour
             _str = SaveClass.I.Str,
             _def = SaveClass.I.Def,
             _agi = SaveClass.I.Agi,
-            _lv = SaveClass.I.Lv,
             _sp = SaveClass.I.Sp,
             _turn = SaveClass.I.Turn,
         };
+
         //既存のセーブデータを上書き
-        JsonSaveManager<SaveData>.Save(saveData, _saveDataPath);
+        JsonSaveManager<SaveData>.Save(saveData, _saveDataPath[_num]);
     }
 }

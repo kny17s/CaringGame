@@ -30,8 +30,6 @@ public class InitialStatusData
     public float Def => _def;
     /// <summary>素早さ</summary>
     public float Agi => _agi;
-    /// <summary>レベル</summary>
-    public int Lv => _lv;
     /// <summary>スキルポイント</summary>
     public int Sp => _sp;
     /// <summary>強化可能回数</summary>
@@ -61,10 +59,6 @@ public class InitialStatusData
     [SerializeField]
     [Header("素早さ")]
     float _agi = 0;
-
-    [SerializeField]
-    [Header("レベル")]
-    int _lv = 0;
 
     [SerializeField]
     [Header("スキルポイント")]

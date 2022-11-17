@@ -19,7 +19,6 @@ MonoBehaviour:
     _str: 5
     _def: 10
     _agi: 20
-    _lv: 1
     _sp: 300
     _turn: 60
   - _name: "\u30B4\u30FC\u30EC\u30E0"
@@ -28,6 +27,5 @@ MonoBehaviour:
     _str: 20
     _def: 30
     _agi: 10
-    _lv: 1
     _sp: 200
     _turn: 60
