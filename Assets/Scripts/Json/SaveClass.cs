@@ -75,49 +75,25 @@ public class SaveClass : MonoBehaviour
     private void Awake() => I = this;
 
     /// <summary>‘Ì—Í‚ğ‹­‰»</summary>
-    public void HpUp() => RandomResult(_hp);
+    public void HpUp(float hp) => _hp += hp;
 
     /// <summary>–‚—Í‚ğ‹­‰»</summary>
-    public void MpUp() => RandomResult(_mp);
+    public void MpUp(float mp) => _mp += mp;
 
     /// <summary>UŒ‚—Í‚ğ‹­‰»</summary>
-    public void StrUp() => RandomResult(_str);
+    public void StrUp(float str) => _str += str;
 
     /// <summary>–hŒä—Í‚ğ‹­‰»</summary>
-    public void DefUp() => RandomResult(_def);
+    public void DefUp(float def) => _def += def;
 
     /// <summary>‘f‘‚³‚ğ‹­‰»</summary>
-    public void AgiUp() => RandomResult(_agi);
+    public void AgiUp(float agi) => _agi += agi;
 
     /// <summary>‹¤’Ê‚Ì–½—ß</summary>
     public void Training()
     {
         _turn--;
         SaveController.I.OverWriteSaveData();
-        CharStatus.I.ReSave();
-    }
-
-    public void RandomResult(float data)
-    {
-        _random = UnityEngine.Random.Range(0, 20);
-
-        if (_random >= 18)
-        {
-            Debug.Log("‘å¬Œ÷I");
-            data += _random * _magnification[0];
-            Training();
-        }
-        else if (_random <= 17 && _random >= 6)
-        {
-            Debug.Log("¬Œ÷");
-            data += _random * _magnification[1];
-            Training();
-        }
-        else
-        {
-            data -= _random * _magnification[2];
-            Debug.Log("¸”s");
-            Training();
-        }
+        CharStatusText.I.ReSave();
     }
 }

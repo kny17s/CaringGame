@@ -14,7 +14,7 @@ public class SaveController : MonoBehaviour
 
     [SerializeField]
     [Header("初期ステータス")]
-    StatusData _StatusData;
+    StatusData _statusData;
 
     /// <summary>保存したいJsonのパス名</summary>
     [SerializeField]
@@ -41,14 +41,14 @@ public class SaveController : MonoBehaviour
             //新たなセーブデータを作成
             saveData = new SaveData()
             {
-                _name = _StatusData.StatusDatas[_num].Name,
-                _hp = _StatusData.StatusDatas[_num].Hp,
-                _mp = _StatusData.StatusDatas[_num].Mp,
-                _str = _StatusData.StatusDatas[_num].Str,
-                _def = _StatusData.StatusDatas[_num].Def,
-                _agi = _StatusData.StatusDatas[_num].Agi,
-                _sp = _StatusData.StatusDatas[_num].Sp,
-                _turn = _StatusData.StatusDatas[_num].Turn, 
+                _name = _statusData.StatusDatas[_num].Name,
+                _hp = _statusData.StatusDatas[_num].Hp,
+                _mp = _statusData.StatusDatas[_num].Mp,
+                _str = _statusData.StatusDatas[_num].Str,
+                _def = _statusData.StatusDatas[_num].Def,
+                _agi = _statusData.StatusDatas[_num].Agi,
+                _sp = _statusData.StatusDatas[_num].Sp,
+                _turn = _statusData.StatusDatas[_num].Turn, 
             };
         }
 

@@ -207,8 +207,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 765786524}
-        m_TargetAssemblyTypeName: SaveClass, Assembly-CSharp
+      - m_Target: {fileID: 2105743860}
+        m_TargetAssemblyTypeName: StatusUp, Assembly-CSharp
         m_MethodName: HpUp
         m_Mode: 1
         m_Arguments:
@@ -1108,8 +1108,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 765786524}
-        m_TargetAssemblyTypeName: SaveClass, Assembly-CSharp
+      - m_Target: {fileID: 2105743860}
+        m_TargetAssemblyTypeName: StatusUp, Assembly-CSharp
         m_MethodName: AgiUp
         m_Mode: 1
         m_Arguments:
@@ -2475,8 +2475,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 765786524}
-        m_TargetAssemblyTypeName: SaveClass, Assembly-CSharp
+      - m_Target: {fileID: 2105743860}
+        m_TargetAssemblyTypeName: StatusUp, Assembly-CSharp
         m_MethodName: StrUp
         m_Mode: 1
         m_Arguments:
@@ -2689,8 +2689,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 765786524}
-        m_TargetAssemblyTypeName: SaveClass, Assembly-CSharp
+      - m_Target: {fileID: 2105743860}
+        m_TargetAssemblyTypeName: StatusUp, Assembly-CSharp
         m_MethodName: DefUp
         m_Mode: 1
         m_Arguments:
@@ -3795,8 +3795,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 765786524}
-        m_TargetAssemblyTypeName: SaveClass, Assembly-CSharp
+      - m_Target: {fileID: 2105743860}
+        m_TargetAssemblyTypeName: StatusUp, Assembly-CSharp
         m_MethodName: MpUp
         m_Mode: 1
         m_Arguments:
@@ -4220,3 +4220,48 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 0
+--- !u!1 &2105743858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2105743859}
+  - component: {fileID: 2105743860}
+  m_Layer: 0
+  m_Name: StatusUp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2105743859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105743858}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 180.1311, y: 415.76312, z: -2.2952452}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2105743860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105743858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db7b5456d5c7a4c4f97b914c9669a0ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _randomMax: 15

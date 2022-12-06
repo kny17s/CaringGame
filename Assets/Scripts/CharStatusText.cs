@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharStatus : MonoBehaviour
+public class CharStatusText : MonoBehaviour
 {
-    public static CharStatus I;
+    public static CharStatusText I;
 
     [SerializeField]
     [Header("ステータステキスト")]
-    List<Text> _statusText = new List<Text>();
+    List<Text> _statusText = new();
 
     [SerializeField]
     [Header("ステータス")]
@@ -40,7 +40,7 @@ public class CharStatus : MonoBehaviour
     /// <summary>初期値に戻す</summary>
     public void ResetStatus()
     {
-        SaveData saveData = new SaveData()
+        SaveData saveData = new()
         {
             _name = _StatusData.StatusDatas[SaveController.I.Num].Name,
             _hp = _StatusData.StatusDatas[SaveController.I.Num].Hp,
